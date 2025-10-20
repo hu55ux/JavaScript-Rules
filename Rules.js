@@ -122,4 +122,71 @@ Map:
 
 
 
+
+                                                                    Arrays & Array Methods
+
+JavaScript-də array-lər məlumatların siyahısını saxlamaq üçün istifadə olunur.
+Array-lər müxtəlif növ məlumatları, o cümlədən ədədləri, mətnləri, obyektləri və digər array-ləri saxlaya bilər.
+Syntax:
+const fruits = ["Apple", "Banana", "Cherry"]; // Array yaratmaq
+accessing array element: fruits[0]; // index vasitəsilə array elementinə daxil olmaq
+
+Basic Array Methods:
+1. .length: Array-in uzunluğunu qaytarır.
+2. .toString(): Array-i mətn formatına çevirir.
+3. .at(index): Array-də müəyyən indeksdəki elementi qaytarır.
+4. .join(separator): Array elementlərini müəyyən ayrıcı ilə birləşdirir.
+5. .pop(): Array-in son elementini silir və qaytarır.
+6. .push(element): Array-in sonuna yeni element əlavə edir.
+7. .shift(): Array-in ilk elementini silir və qaytarır.
+8. .unshift(element): Array-in əvvəlinə yeni element əlavə edir.
+9. .delete index: Array-də müəyyən indeksdəki elementi silir.
+10. .concat(array): İki və ya daha çox array-i birləşdirir.
+11. .copyWithin(target, start, end): Array-in müəyyən hissəsini başqa yerə kopyalayır. target - kopyalanacaq yerin indeksi, 
+start - kopyalanacaq hissənin başlanğıc indeksi, end - kopyalanacaq hissənin son indeksi (son indeks daxil deyil).
+Yəni array.copyWithin(0, 3, 5) deyəndə array-in 3-cü indeksdən 5-ci indeksə qədər olan hissəsi (5-ci indeks daxil deyil) 0-cı indekse kopyalanır.
+12. .flat(depth): Daxili array-ləri müəyyən dərinlikdə düzləşdirir. depth - düzləşdirmə dərinliyi (default 1). Yəni array.flat(2) deyəndə array-dəki daxili array-lər 2 səviyyəyə qədər düzləşdirilir.
+düzləşdirmə - daxili array-lərin elementlərini əsas array-ə əlavə etmək deməkdir.
+13. .slice(start, end): Array-in müəyyən hissəsini yeni array kimi qaytarır. start - başlanğıc indeksi, end - son indeks (son indeks daxil deyil).
+14. .splice(start, deleteCount, item1, item2, ...): Array-də müəyyən yerdən elementləri silmək və ya əlavə etmək üçün istifadə olunur.
+Yəni array.splice(2, 1, "Orange", "Grapes") deyəndə array-in 2-ci indeksindən başlayaraq 1 element silinir və yerinə "Orange" və "Grapes" əlavə olunur.
+15. .toSpliced(start, deleteCount, item1, item2, ...): Array-də müəyyən yerdən elementləri silmək və ya əlavə etmək üçün istifadə olunur, amma orijinal array-i dəyişmir, yeni array qaytarır.
+
+Searching Array Methods:
+1. .indexOf(element): Array-də müəyyən elementin ilk indeksini qaytarır, əgər element tapılmazsa -1 qaytarır.
+2. .lastIndexOf(element): Array-də müəyyən elementin sonuncu indeksini qaytarır, əgər element tapılmazsa -1 qaytarır.
+3. .includes(element): Array-də müəyyən elementin olub-olmadığını yoxlayır və boolean dəyər qaytarır.
+4. .find(callback): Array-də müəyyən şərtə uyğun ilk elementi qaytarır.
+5. .findIndex(callback): Array-də müəyyən şərtə uyğun ilk elementin indeksini qaytarır.
+6. .findLast(callback): Array-də müəyyən şərtə uyğun sonuncu elementi qaytarır.
+7. .findLastIndex(callback): Array-də müəyyən şərtə uyğun sonuncu elementin indeksini qaytarır.
+
+Sorting Array Methods:
+1. .sort(): Array elementlərini əlifba sırasına və ya ədədi sıralamaya görə düzür.
+2. .reverse(): Array elementlərinin sırasını tərsinə çevirir.
+3. .toSorted(compareFunction): Array elementlərini müəyyən müqayisə funksiyasına əsasən düzür və yeni array qaytarır.
+4. .toReversed(): Array elementlərinin sırasını tərsinə çevirir və yeni array qaytarır.
+reverse methodunda orijinal array dəyişir, amma toReversed methodunda orijinal array dəyişmir, yeni array qaytarır.
+.sort methodunda orijinal array dəyişir, amma toSorted methodunda orijinal array dəyişmir, yeni array qaytarır.
+5. Math.min(...array): Array-dəki ən kiçik ədədi qaytarır.
+6. Math.max(...array): Array-dəki ən böyük ədədi qaytarır.
+
+Iteration Array Methods:
+1. .forEach(callback): Array-in hər bir elementi üzərində müəyyən əməliyyat aparmaq üçün istifadə olunur.
+2. .map(callback): Array-in hər bir elementi üzərində müəyyən əməliyyat aparmaq üçün istifadə olunur və yeni array qaytarır.
+3. .flatMap(callback): Array-in hər bir elementi üzərində müəyyən əməliyyat aparır, nəticələri düzləşdirir və yeni array qaytarır.
+4. .filter(callback): Array-də müəyyən şərtə uyğun elementləri seçir və yeni array qaytarır.
+5. .reduce(callback, initialValue): Array elementlərini tək bir dəyərə endirir.
+6. .reduceRight(callback, initialValue): Array elementlərini sağdan sola tək bir dəyərə endirir.
+7. .every(callback): Bütün elementlərin müəyyən şərtə uyğun olub-olmadığını yoxlayır və boolean dəyər qaytarır.
+8. .some(callback): Hər hansı bir elementin müəyyən şərtə uyğun olub-olmadığını yoxlayır və boolean dəyər qaytarır.
+9. .from(arrayLike, mapFunction, thisValue): Array-yaratmaq üçün istifadə olunur. Yəni Array.from("Hello") deyəndə ['H', 'e', 'l', 'l', 'o'] qaytarır.
+10. .keys(): Array-in indekslərini qaytarır.
+11. .entries(): Array-in indeks və dəyər cütlüklərini qaytarır.
+12. .with(index, value): Array-də müəyyən indeksi yeni dəyər ilə əvəz edir və yeni array qaytarır.
+13. .Spread Operator (...): Array elementlərini ayrı-ayrı dəyərlər kimi çıxarmaq üçün istifadə olunur. Məsələn, Math.max(...array) deyəndə array-dəki bütün ədədləri ayrı-ayrı arqumentlər kimi Math.max funksiyasına ötürürük.
+14. .Rest Operator (...): Funksiyaya naməlum sayda arqument ötürmək üçün istifadə olunur. Məsələn, function sum(...numbers) deyəndə funksiyaya istənilən sayda ədəd ötürə bilərik və onlar numbers array-i kimi qəbul olunur.  
+
+
+
 */
