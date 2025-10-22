@@ -189,4 +189,37 @@ Iteration Array Methods:
 
 
 
+                                                                                    String Methods
+
+JavaScript-də string-lər mətn məlumatlarını saxlamaq üçün istifadə olunur. Bu methodlar string-lərlə işləmək üçün müxtəlif funksiyalar təqdim edir.
+
+1. .length: String-in uzunluğunu qaytarır.
+2. .charAt(index): String-də müəyyən indeksdəki simvolu qaytarır.
+3. .charCodeAt(index): String-də müəyyən indeksdəki simvolun Unicode dəyərini qaytarır.
+4. .codePointAt(index): String-də müəyyən indeksdəki simvolun Unicode kod nöqtəsini qaytarır.
+5. .concat(string2, string3, ...): İki və ya daha çox string-i birləşdirir.
+6. .at(index): String-də müəyyən indeksdəki simvolu qaytarır.
+7. [.]: String-də müəyyən indeksdəki simvola daxil olmaq üçün istifadə olunur.
+8. .slice(start, end): String-in müəyyən hissəsini qaytarır.
+9. .substring(start, end): String-in müəyyən hissəsini qaytarır.
+10. .substr(start, length): String-in müəyyən hissəsini qaytarır. substring methodu ilə oxşardır, amma burada son parametr uzunluqdur, son indeks deyil.
+11. .toUpperCase(): String-i böyük hərflərə çevirir.
+12. .toLowerCase(): String-i kiçik hərflərə çevirir.
+14. .toWellFormed(): String-i düzgün formada (title case) çevirir.
+15. .trim(): String-in əvvəlindəki və sonundakı boşluqları silir.
+16. .trimStart(): String-in əvvəlindəki boşluqları silir.
+17. .trimEnd(): String-in sonundakı boşluqları silir.
+18. .padStart(targetLength, padString): String-in əvvəlinə müəyyən uzunluğa çatmaq üçün əlavə simvollar əlavə edir.
+19. .padEnd(targetLength, padString): String-in sonuna müəyyən uzunluğa çatmaq üçün əlavə simvollar əlavə edir.
+20. .repeat(count): String-i müəyyən sayda təkrar edir.
+21. .replace(searchValue, replaceValue): String-də müəyyən simvol və ya simvolları başqa simvol və ya simvollarla əvəz edir.
+22. .replaceAll(searchValue, replaceValue): String-də müəyyən simvol və ya simvolların bütün hallarını başqa simvol və ya simvollarla əvəz edir.
+23. .split(separator, limit): String-i müəyyən ayrıcı ilə bölür və yeni array qaytarır.
+
+
+
+
+
+
+
 */
