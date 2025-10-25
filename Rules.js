@@ -218,6 +218,33 @@ JavaScript-də string-lər mətn məlumatlarını saxlamaq üçün istifadə olu
 
 
 
+                                                                                Number methods
+Number methods - Number methodları bu tipdə olan datalarla rahat işləmək üçün istifadə olunan methodlardır.İndi gəlin bu methodlarla tanış olaq.
+1. .toFixed(parameter) - 
+2. .toString() - 
+3. .parseInt() - 
+4. .parseFloat() - 
+5. .Math.some methods - 
+5.1. Math.round(number) - 
+5.2. Math.ceil(number) - 
+5.3. Math.floor(number) - 
+const colors = ["H","U","S","U","N"];
+5.4. Math.random - colors[(Math.floor(Math.random() * colors.length))]
+
+
+
+                                                                                    Methods in Object
+
+const person = {
+  name: "Huseyn",
+  lastName: "Huseynzade",
+  greet: function () {
+    console.log("Hello" + " " + this.name + " " + this.lastName + " .");
+  },
+};
+
+person.greet();
+
 
 
 
