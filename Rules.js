@@ -246,6 +246,40 @@ const person = {
 person.greet();
 
 
+                                                                                        DOM (Document Object Model)
+
+Document Object Model (DOM) - veb səhifələrin strukturunu və məzmununu JavaScript vasitəsilə idarə etməyə imkan verən proqramlaşdırma interfeysidir. 
+Bunun üçün biz ilk öncə HTML elementlərini seçməliyik və sonra onlarla işləyə bilərik.
+Seçmə metodları:
+1. document.getElementById(id) - ID-yə əsasən elementi seçir. Məsələn, document.getElementById("header") deyəndə ID-si "header" olan elementi seçir.
+2. document.getElementsByClassName(className) - Sinfə əsasən elementləri seçir. Məsələn, document.getElementsByClassName("item") deyəndə sinfi "item" olan bütün elementləri seçir.
+3. document.getElementsByTagName(tagName) - Tag adına əsasən elementləri seçir. Məsələn, document.getElementsByTagName("p") deyəndə bütün <p> elementlərini seçir.
+
+indi gəlin elementləri seçdikdən sonra onlarla necə işləyə biləcəyimizi öyrənək.
+const header = document.getElementById("header");
+header.style.color = "blue"; // Elementin rəngini dəyişir
+header.innerHTML = "Yeni Başlıq"; // Elementin məzmununu dəyişir
+header.addEventListener("click", function() {
+  alert("Başlıq kliklənildi!"); // Elementə klik hadisəsi əlavə edir
+});
+header.classList.add("active"); // Elementə yeni sinif əlavə edir
+header.classList.remove("active"); // Elementdən sinif silir
+header.innertext = "Salam Dünya"; // Elementin mətn məzmununu dəyişir
+
+
+Məsələn bizim bir arrayımız var və bu array daxilində olan elementləri sıra ilə h1 tag-ləri içində HTML sənədinə əlavə etmək istəyirik.
+const fruits = ["Apple", "Banana", "Cherry"];
+fruits.forEach(fruit => {
+  const h1 = document.createElement("h1"); // Yeni h1 elementi yaradılır
+  h1.innerText = fruit; // h1 elementinin mətn məzmunu təyin edilir
+  document.body.append(h1); // h1 elementi sənədin bədəninə əlavə edilir
+});
+bu kod fruits array-indəki hər bir meyvə üçün yeni bir h1 elementi yaradacaq və onu HTML sənədinə əlavə edəcək.
+
+header.classlist.toggle("active") - Elementdə sinif varsa silir, yoxdursa əlavə edir. buna misal olaraq dark mode light mode keçidini göstərmək olar.
+body.classlist.toggle("dark-mode")
+body.classlist.toggle.contains("dark-mode")? body.style.backgroundColor="black": body.style.backgroundColor="white"
+
 
 
 
