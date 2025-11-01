@@ -281,6 +281,82 @@ body.classlist.toggle("dark-mode")
 body.classlist.toggle.contains("dark-mode")? body.style.backgroundColor="black": body.style.backgroundColor="white"
 
 
+                                                                    Event loop
+JavaScript-də Event Loop - asinxron əməliyyatların idarə olunması üçün istifadə olunan mexanizmdir.
+Sinxron kodlar və Asinxron kodlar
+Sinxron kodlar Call Stack-də ardıcıl şəkildə icra olunur, yəni bir əməliyyat bitmədən növbəti əməliyyat başlamır. Və bu processlər bloklanmaya səbəb ola bilər. Bu processlər bitdikdən sonra isə Call stack boşalır.
+Bu kodlara misal olaraq:
+console.log("Start");
+setTimeout(() => {
+  console.log("This is asynchronous code");
+}, 2000);
+console.log("End");
+Bu kodda "Start" və "End" mesajları dərhal konsola çıxarılır, amma "This is asynchronous code" mesajı 2 saniyə sonra çıxarılır. Bu, setTimeout funksiyasının asinxron olduğunu göstərir.
+
+Asinxron kodlar isə Web APIs-də işlənir və Call Stack-i bloklamır. Asinxron əməliyyatlar tamamlandıqda, onların callback funksiyaları Callback Queue-yə əlavə olunur.
+Event Loop isə Call Stack-in boş olub-olmadığını yoxlayır. Əgər Call Stack boşdursa, Event Loop Callback Queue-dən növbəti callback funksiyasını götürür və 
+onu Call Stack-ə əlavə edir ki, icra olunsun. Bu proses davam edir və beləliklə, asinxron əməliyyatlar effektiv şəkildə idarə olunur.
+Bu kodlara misal olaraq:
+click event-ləri, setTimeout, fetch API çağırışları və s. göstərmək olar.
+
+Nəticə olaraq 
+Call stack gözləmə lazım olmayan yəni sinxron kodlar üçün istifadə olunur.
+Web APIs isə gözləmə lazım olan yəni asinxron kodlar üçün istifadə olunur.
+Callback Queue isə asinxron əməliyyatların tamamlandıqdan sonra icra olunacaq funksiyaların növbəsini saxlayır.
+
+Gözləmə lazım olan kodların Web API-da işləmə səbəbi JavaScript-in tək iplikli (single-threaded) olmasıdır.
+Gəlin bu mövzunu bir misal ilə izah edək:
+console.log(1);
+setTimeout(() => {
+  console.log(2);
+}, 0);
+console.log(3); 
+
+Burada code 1 və 3 dərhal konsola çıxarılır, amma 2 mesajı setTimeout vasitəsilə asinxron şəkildə işlənir. 
+Gözləmə müddəti 0 olsa da, setTimeout funksiyası Web API-da işlənir və onun callback funksiyası Callback Queue-yə əlavə olunur.
+
+
+
+                                                                    Data Fetching
+Data Fetching - veb tətbiqlərində serverdən məlumatları əldə etmək üçün istifadə olunan prosesdir. Bu iş üçün hazır fetch methodundan istifadə olunur.
+Syntax:
+const userData = async () => {
+  // async function yaradılır
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/users"); // fetch methodu serverə sorğu göndərir və cavabı gözləyir
+    const data = await response.json(); // cavabı JSON formatında oxuyur
+  } catch (error) {
+    // səhv baş verərsə, onu tutub konsola çıxarır
+    console.log("Error:", error); // səhv mesajını konsola çıxarır
+  }
+  return data;
+};
+
+const renderUsers = async () => {
+  const users = await userData();
+  const userList = document.getElementById("user-list");
+  users.forEach((user) => {
+    const li = document.createElement("li");
+    li.innerText = `${user.name} - ${user.email}`;
+    userList.appendChild(li);
+  });
+};
+
+async function getuserData() {
+  // async function yaradılır
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/users"); // fetch methodu serverə sorğu göndərir və cavabı gözləyir
+    const data = await response.json(); // cavabı JSON formatında oxuyur
+    console.log(data); // məlumatları konsola çıxarır
+  } catch (error) {
+    // səhv baş verərsə, onu tutub konsola çıxarır
+    console.error("Error:", error); // səhv mesajını konsola çıxarır
+  }
+}
+
+const data = userData();
+
+
 
 
 */
