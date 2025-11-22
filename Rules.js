@@ -359,4 +359,181 @@ const data = userData();
 
 
 
+                                                        Fetch API
+
+Fetch API - veb brauzerlərdə serverdən məlumatları asinxron şəkildə əldə etmək üçün istifadə olunan müasir bir interfeysdir.
+
+
+const registernameInput = document.getElementById("register-name");
+const registerlastnameInput = document.getElementById("register-lastname");
+const registeremailInput = document.getElementById("register-email");
+const registerpasswordInput = document.getElementById("register-password");
+const registerbtn = document.getElementById("register-btn");
+
+const registerUser = async () => {
+  try {
+    const response = await fetch("https://ilkinibadov.com/api/v1/auth/signup", {
+      method: "POST",
+      body: JSON.stringify({
+        firstname: registernameInput.value,
+        lastname: registerlastnameInput.value,
+        email: registeremailInput.value,
+        password: registerpasswordInput.value,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (error) {*    console.error("Error:", error);
+  }
+};
+
+registerbtn.addEventListener("click", registerUser);
+
+
+JavaScriptdə səhifə fəyişmə methodu var ki bunu da bu cüt istifadaə edə bilərik:
+if(response.ok){
+    // Səhifə dəyişmə
+    window.location.href = "welcome.html";
+} else {
+    // Xəta mesajı göstərmə
+    alert("Registration failed. Please try again.");
+}
+
+
+
+
+                                                                    Local Storage & Cookies
+
+
+Local Storage - Veb brauzerlərdə məlumatları istifadəçinin kompüterində saxlayan bir yaddaş sahəsidir. Burada datalar key-value (açar-dəyər) cütlükləri şəklində saxlanılır və brauzer bağlansa belə məlumatlar itmir.
+Local Storage sadəcə 10MB yaddaş sahəsi təklif edir və məlumatlar yalnız eyni domen daxilində əldə edilə bilər.
+
+Session Storage - Veb brauzerlərdə məlumatları istifadəçinin kompüterində saxlayan bir yaddaş sahəsidir. Burada datalar key-value (açar-dəyər) cütlükləri şəklində saxlanılır və brauzer bağlandıqda məlumatlar silinir.
+Burada data sadəcə səhifə sessiyası müddətində saxlanılır və brauzer bağlandıqda məlumatlar itir.
+
+Cookies - Veb brauzerlərdə kiçik məlumat parçalarını istifadəçinin kompüterində saxlayan bir yaddaş mexanizmidir.
+Cookies server və müştəri arasında məlumat mübadiləsi üçün istifadə olunur və məlumatlar müəyyən müddətə qədər saxlanıla bilər. Və bu müddəti biz təyin edə bilərik.
+
+Local Storage istifadə qaydası:
+// Məlumat saxlamaq
+1. Local storage-də məlumat yazılan zaman bu datalar mütləq string formatında saxlanılmalıdır.
+localStorage.setItem("key", "value"); // Məlumat saxlamaq
+// Məlumat oxumaq
+const value = localStorage.getItem("key"); // Məlumat oxumaq
+// Məlumat silmək
+localStorage.removeItem("key"); // Məlumat silmək
+// Bütün məlumatları silmək
+localStorage.clear(); // Bütün məlumatları silmək
+Bəzən ola bilər ki biz fərqli type olan dataları yazaq və ya oxumaq istəyəq. Məsələn, array və ya object. Bu zaman biz JSON.stringify() və JSON.parse() methodlarından istifadə edirik.
+// Məlumat saxlamaq (boolean, number, object, array)
+const user = {
+  name: "John",
+  age: 30,
+};
+localStorage.setItem("user", JSON.stringify(user)); // Məlumat saxlamaq
+// Məlumat oxumaq (boolean, number, object, array)
+const userData = JSON.parse(localStorage.getItem("user")); // Məlumat oxumaq
+
+
+
+
+2. Cookies istifadə qaydası:
+// Məlumat saxlamaq
+document.cookie = "username=John Doe; expires=Fri, 31 Dec 2024 23:59:59 GMT; path=/"; // Məlumat saxlamaq
+// Məlumat oxumaq
+const cookies = document.cookie; // Məlumat oxumaq
+// Məlumat silmək
+document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/"; // Məlumat silmək
+
+
+                                                                          Classes in JavaScript
+
+Class - obyekt yönümlü proqramlaşdırmada istifadə olunan bir konseptdir və JavaScript-də ES6 (ECMAScript 2015) versiyasından etibarən mövcuddur.
+Class-lar obyektlərin şablonlarını yaratmaq üçün istifadə olunur və onlar vasitəsilə oxşar xüsusiyyətlərə və metodlara malik obyektlər yaradıla bilər.
+syntax:
+class Person {
+  constructor(name, age) {
+    this.name = name; // Obyektin name xüsusiyyəti
+    this.age = age;   // Obyektin age xüsusiyyəti
+  }
+
+  greet() {
+    console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+  }
+}
+const person1 = new Person("Alice", 30); // Yeni obyekt yaradılır
+
+person1.greet(); // Metod çağırılır
+
+Indi gəlin inheritance (miras alma) nümunəsinə baxaq:
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+
+  speak() {
+    console.log(`${this.name} makes a noise.`);
+  }
+}
+
+class Dog extends Animal {
+  constructor(name, breed) {
+    super(name); // Parent class-in constructor-unu çağırır
+    this.breed = breed;
+  }
+
+  speak() {
+    console.log(`${this.name} barks.`);
+  }
+}
+
+const dog1 = new Dog("Buddy", "Golden Retriever");
+dog1.speak(); // Metod çağırılır
+
+
+Encapsulation (qapsulasiya) nümunəsi:
+class BankAccount {
+  #balance; // Private property
+
+  constructor(initialBalance) {
+    this.#balance = initialBalance;
+  }
+
+  deposit(amount) {
+    if (amount > 0) {
+      this.#balance += amount;
+      console.log(`Deposited: $${amount}`);
+    } else {
+      console.log("Deposit amount must be positive.");
+    }
+  }
+
+  withdraw(amount) {
+    if (amount > 0 && amount <= this.#balance) {
+      this.#balance -= amount;
+      console.log(`Withdrew: $${amount}`);
+    } else {
+      console.log("Insufficient funds or invalid amount.");
+    }
+  }
+
+  getBalance() {
+    return this.#balance;
+  }
+}
+const myAccount = new BankAccount(1000);
+myAccount.deposit(500); // Deposited: $500
+myAccount.withdraw(200); // Withdrew: $200
+console.log(`Current Balance: $${myAccount.getBalance()}`); // Current Balance: $1300
+
+
+
+
+
+
+
+
+
+
 */
